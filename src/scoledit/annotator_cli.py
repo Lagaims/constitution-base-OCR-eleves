@@ -13,13 +13,17 @@ def main() -> None:
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Extrait les balises <text> des XML du Corpus et les upload sur S3."
+        description=(
+            "Extrait les transcriptions TEI des copies Scoledit (CP-CM2), les découpe "
+            "par page (<pb/>) pour s'aligner sur les scans et upload une annotation "
+            "JSON par scan sur S3."
+        )
     )
     parser.add_argument(
         "--corpus",
         type=Path,
         default=Path("Corpus"),
-        help="Chemin vers le répertoire Corpus (défaut : ./Corpus)",
+        help="Répertoire racine du corpus (structure Grade_NN_(NIVEAU)/Scoledit/). Défaut : ./Corpus",
     )
     parser.add_argument(
         "--log-level",
